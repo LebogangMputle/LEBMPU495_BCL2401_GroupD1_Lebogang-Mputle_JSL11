@@ -76,7 +76,7 @@ function filterAndDisplayTasksByBoard(boardName) {
     const tasksContainer = column.querySelector('.tasks-container');
     tasksContainer.innerHTML = ''; // Clear existing tasks
 
-    filteredTasks.filter(task => task.status === status).forEach(task => { 
+    filteredTasks.filter(task => task.status === status).forEach(task => { //assignment instead of comparison
       const taskElement = document.createElement("div");
       taskElement.classList.add("task-div");
       taskElement.textContent = task.title;
