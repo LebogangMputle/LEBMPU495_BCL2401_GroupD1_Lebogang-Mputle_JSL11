@@ -120,12 +120,12 @@ function addTaskToUI(task) {
     column.appendChild(tasksContainer);
   }
 
+  //responsible for dynamically adding tasks to a web page
   const taskElement = document.createElement('div');
-  taskElement.className = 'task-div';
+  taskElement.classList.add('task-div');
   taskElement.textContent = task.title; // Modify as needed
-  taskElement.setAttribute('data-task-id', task.id);
-  
-  tasksContainer.appendChild(taskElement); 
+  taskElement.dataset.taskId = task.id;
+  tasksContainer.appendChild(taskElement);
 }
 
 function setupEventListeners() {
