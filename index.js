@@ -18,8 +18,17 @@ function initializeData() {
 
 // TASK: Get elements from the DOM
 const elements = {
-
-}
+  headerBoardName: document.getElementById('header-board-name'),
+  boardsNavLinksDiv: document.getElementById('boards-nav-links-div'),
+  columnDivs: document.querySelectorAll('.column-div'),
+  hideSideBarBtn: document.getElementById('hide-sidebar-btn'),
+  showSideBarBtn: document.getElementById('show-sidebar-btn'),
+  themeSwitch: document.getElementById('theme-switch'),
+  createNewTaskBtn: document.getElementById('create-new-task-btn'),
+  modalWindow: document.getElementById('modal-window'),
+  filterDiv: document.getElementById('filter-div'),
+  editTaskModal: document.getElementById('edit-task-modal'),
+};
 
 let activeBoard = ""
 
