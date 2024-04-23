@@ -138,7 +138,8 @@ function setupEventListeners() {
   cancelAddTaskBtn.addEventListener('click', () => {
     toggleModal(false);
     elements.filterDiv.style.display = 'none'; // Also hide the filter overlay
-  });
+    elements.modalWindow.reset();
+  }); //added the reset function to clear the form after cancel.
 
   // Clicking outside the modal to close it
   elements.filterDiv.addEventListener('click', () => {
