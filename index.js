@@ -1,6 +1,12 @@
 // TASK: import helper functions from utils
 // TASK: import initialData
-import { getTasks, createNewTask, patchTask, putTask, delereTask} from "./utils/taskFunctions.js";
+import { 
+  getTasks, 
+  createNewTask, 
+  patchTask, 
+  putTask, 
+  deleteTask} 
+  from "./utils/taskFunctions.js";
 import { initialData } from './initialData.js';
 
 /*************************************************************************************************************************************************
@@ -19,49 +25,15 @@ function initializeData() {
 
 // TASK: Get elements from the DOM
 const elements = {
-  sideBarDiv: document.getElementById('side-bar-div'),
-  logo: document.getElementById('logo'),
-  boardsNavLinksDiv: document.getElementById('boards-nav-links-div'),
-  headlineSidepanel: document.getElementById('headline-sidepanel'),
-  hideSideBarBtn: document.getElementById('hide-side-bar-btn'),
-  showSideBarBtn: document.getElementById('show-side-bar-btn'),
-  themeSwitch: document.getElementById('switch'),
-  createNewTaskBtn: document.getElementById('add-new-task-btn'),
-  newTaskModalWindow: document.getElementById('new-task-modal-window'),
-  //MAin Layout: Header with board title, add task button, and main content area for task columns.
-  layout: document.getElementById('layout'),
-  Header: document.getElementById('header'),
-  stickyHeader: document.getElementById('sticky-header'),
-  headerNameDiv: document.getElementById('header-name-div'),
-  headerBoardName: document.getElementById('header-board-name'),
-  dropDownBtn: document.getElementById('dropdownBtn'),
-  drpoDownIcon: document.getElementById('dropDownIcon'),
-  editTaskModalEditBoardDiv: document.getElementById('editBoardDiv'),
-  editTaskModalDeleteBoardBtn: document.getElementById('deleteBoardBtn'),
-  editTaskModalButton: document.getElementById('editBtns'),
-
-  //
-  Container: document.getElementById('container'),
-  CardColumnMain: document.getElementById('card-column-main'),
-  Container: document.getElementById('card-column-main'),
-
-  //New Task modal
-
-
-  filterDiv: document.getElementById('filterDiv'),
-  editTaskModalWindow: document.getElementById('edit-task-modal-window'),
-  editTaskModalSideBarDiv: document.getElementById('side-bar'),
-  editTaskModalSideLogoDiv: document.getElementById('side-logo-div'),
-  editTaskModalHeadlineSidepanel: document.getElementById('headline-sidepanel'),
-  editTaskModalSideBarBottom: document.getElementById('side-bar-bottom'),
-  editTaskModalToggleDiv: document.getElementById('toggle-div'),
-  editTaskModalIconDark: document.getElementById('icon-dark'),
-  editTaskModalIconLight: document.getElementById('icon-light'),
-  editTaskModalSwitch: document.getElementById('switch'),
-  editTaskModalLabelCheckboxTheme: document.getElementById('label-checkbox-theme'),
-  editTaskModalBoardBtn: document.getElementById('board-btn'),
-  editTaskModalButton: document.getElementById('button'),
-  editTaskModalNewTaskModalWindow: document.getElementById('new-task-modal-window'),
+  // Navigation Sidebar elements
+  sideBar: document.querySelector(".side-bar"),
+  logo: document.getElementById("logo"),
+  boardsNavLinks: document.getElementById("boards-nav-links-div"),
+  darkThemeIcon: document.getElementById("icon-dark"),
+  themeSwitch: document.getElementById("switch"),
+  lightThemeIcon: document.getElementById("icon-light"),
+  hideSideBarBtn: document.getElementById("hide-side-bar-btn"),
+  showSideBarBtn: document.getElementById("show-side-bar-btn"),
 };
 
 let activeBoard = "";
