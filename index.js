@@ -1,6 +1,6 @@
 // TASK: import helper functions from utils
 // TASK: import initialData
-import { getTasks } from './utils.js';
+import { getTasks, createNewTask, patchTask, putTask, delereTask} from "./utils/taskFunctions.js";
 import { initialData } from './initialData.js';
 
 /*************************************************************************************************************************************************
@@ -19,19 +19,79 @@ function initializeData() {
 
 // TASK: Get elements from the DOM
 const elements = {
-  headerBoardName: document.getElementById('header-board-name'),
+  sideBarDiv: document.getElementById('side-bar-div'),
+  logo: document.getElementById('logo'),
   boardsNavLinksDiv: document.getElementById('boards-nav-links-div'),
-  columnDivs: document.querySelectorAll('.column-div'),
-  hideSideBarBtn: document.getElementById('hide-sidebar-btn'),
-  showSideBarBtn: document.getElementById('show-sidebar-btn'),
-  themeSwitch: document.getElementById('theme-switch'),
-  createNewTaskBtn: document.getElementById('create-new-task-btn'),
-  modalWindow: document.getElementById('modal-window'),
-  filterDiv: document.getElementById('filter-div'),
-  editTaskModal: document.getElementById('edit-task-modal'),
+  headlineSidepanel: document.getElementById('headline-sidepanel'),
+  hideSideBarBtn: document.getElementById('hide-side-bar-btn'),
+  showSideBarBtn: document.getElementById('show-side-bar-btn'),
+  themeSwitch: document.getElementById('switch'),
+  createNewTaskBtn: document.getElementById('add-new-task-btn'),
+  newTaskModalWindow: document.getElementById('new-task-modal-window'),
+  //MAin Layout: Header with board title, add task button, and main content area for task columns.
+  layout: document.getElementById('layout'),
+  Header: document.getElementById('header'),
+  stickyHeader: document.getElementById('sticky-header'),
+  headerNameDiv: document.getElementById('header-name-div'),
+  headerBoardName: document.getElementById('header-board-name'),
+  dropDownBtn: document.getElementById('dropdownBtn'),
+  drpoDownIcon: document.getElementById('dropDownIcon'),
+  editTaskModalEditBoardDiv: document.getElementById('editBoardDiv'),
+  editTaskModalDeleteBoardBtn: document.getElementById('deleteBoardBtn'),
+  editTaskModalButton: document.getElementById('editBtns'),
+
+  //
+  Container: document.getElementById('container'),
+  CardColumnMain: document.getElementById('card-column-main'),
+  Container: document.getElementById('card-column-main'),
+
+  //New Task modal
+
+
+  filterDiv: document.getElementById('filterDiv'),
+  editTaskModalWindow: document.getElementById('edit-task-modal-window'),
+  editTaskModalSideBarDiv: document.getElementById('side-bar'),
+  editTaskModalSideLogoDiv: document.getElementById('side-logo-div'),
+  editTaskModalHeadlineSidepanel: document.getElementById('headline-sidepanel'),
+  editTaskModalSideBarBottom: document.getElementById('side-bar-bottom'),
+  editTaskModalToggleDiv: document.getElementById('toggle-div'),
+  editTaskModalIconDark: document.getElementById('icon-dark'),
+  editTaskModalIconLight: document.getElementById('icon-light'),
+  editTaskModalSwitch: document.getElementById('switch'),
+  editTaskModalLabelCheckboxTheme: document.getElementById('label-checkbox-theme'),
+  editTaskModalBoardBtn: document.getElementById('board-btn'),
+  editTaskModalButton: document.getElementById('button'),
+  editTaskModalNewTaskModalWindow: document.getElementById('new-task-modal-window'),
 };
 
 let activeBoard = "";
+
+/*const sideBarDiv = elements.sideBarDiv;
+const logo = elements.logo;
+const boardsNavLinksDiv = elements.boardsNavLinksDiv;
+const headlineSidepanel = elements.headlineSidepanel;
+const hideSideBarBtn = elements.hideSideBarBtn;
+const showSideBarBtn = elements.showSideBarBtn;
+const themeSwitch = elements.themeSwitch;
+const createNewTaskBtn = elements.createNewTaskBtn;
+const newTaskModalWindow = elements.newTaskModalWindow;
+const filterDiv = elements.filterDiv;
+const editTaskModalWindow = elements.editTaskModalWindow;
+const editTaskModalSideBarDiv = elements.editTaskModalSideBarDiv;
+const editTaskModalSideLogoDiv = elements.editTaskModalSideLogoDiv;
+const editTaskModalHeadlineSidepanel = elements.editTaskModalHeadlineSidepanel;
+const editTaskModalSideBarBottom = elements.editTaskModalSideBarBottom;
+const editTaskModalToggleDiv = elements.editTaskModalToggleDiv;
+const editTaskModalIconDark = elements.editTaskModalIconDark;
+const editTaskModalIconLight = elements.editTaskModalIconLight;
+const editTaskModalSwitch = elements.editTaskModalSwitch;
+const editTaskModalLabelCheckboxTheme = elements.editTaskModalLabelCheckboxTheme;
+const editTaskModalEditBoardDiv = elements.editTaskModalEditBoardDiv;
+const editTaskModalDeleteBoardBtn = elements.editTaskModalDeleteBoardBtn;
+const editTaskModalBoardBtn = elements.editTaskModalBoardBtn;
+const editTaskModalButton = elements.editTaskModalButton;
+const editTaskModalNewTaskModalWindow = elements.editTaskModalNewTaskModalWindow;
+*/
 
 // Extracts unique board names from tasks
 // TASK: FIX BUGS
@@ -133,7 +193,7 @@ function addTaskToUI(task) {
 function setupEventListeners() {
   // Cancel editing task event listener
   const cancelEditBtn = document.getElementById('cancel-edit-btn');
-  cancelEditBtn.addEventListener('click', () => toggleModal(false, elements.editTaskModal));;
+  cancelEditBtn.addEventListener('click', () => toggleModal(false, elements.editTaskModal));
 
   // Cancel adding new task event listener
   const cancelAddTaskBtn = document.getElementById('cancel-add-task-btn');
