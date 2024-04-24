@@ -34,6 +34,11 @@ const elements = {
   lightThemeIcon: document.getElementById("icon-light"),
   hideSideBarBtn: document.getElementById("hide-side-bar-btn"),
   showSideBarBtn: document.getElementById("show-side-bar-btn"),
+
+    // Header
+    headerBoardName: document.getElementById("header-board-name"),
+    addNewTaskBtn: document.getElementById("add-new-task-btn"),
+    editBoardBtn: document.getElementById("edit-board-btn"),
 };
 
 let activeBoard = "";
