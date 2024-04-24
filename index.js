@@ -54,9 +54,9 @@ const elements = {
   tasksContainer : document.querySelectorAll(".tasks-container"),
 
   // Edit Task Modal
-  editTaskModal: document.querySelector(".edit-task-modal-window"),
-  editTaskTitleInput: document.getElementById("edit-task-title-input"),
-  editTaskDescInput: document.getElementById("edit-task-desc-input"),
+  modalWindow: document.querySelector(".edit-task-modal-window"),
+  editTaskForm: document.getElementById("edit-task-form"),
+  editTaskFormInput: document.getElementById("edit-task-desc-input"),
   editSelectStatus: document.getElementById("edit-select-status"),
   saveTaskChangesBtn: document.getElementById("save-task-changes-btn"),
   cancelEditBtn: document.getElementById("cancel-edit-btn"),
@@ -67,33 +67,6 @@ const elements = {
 };
 
 let activeBoard = ""
-
-/*const sideBarDiv = elements.sideBarDiv;
-const logo = elements.logo;
-const boardsNavLinksDiv = elements.boardsNavLinksDiv;
-const headlineSidepanel = elements.headlineSidepanel;
-const hideSideBarBtn = elements.hideSideBarBtn;
-const showSideBarBtn = elements.showSideBarBtn;
-const themeSwitch = elements.themeSwitch;
-const createNewTaskBtn = elements.createNewTaskBtn;
-const newTaskModalWindow = elements.newTaskModalWindow;
-const filterDiv = elements.filterDiv;
-const editTaskModalWindow = elements.editTaskModalWindow;
-const editTaskModalSideBarDiv = elements.editTaskModalSideBarDiv;
-const editTaskModalSideLogoDiv = elements.editTaskModalSideLogoDiv;
-const editTaskModalHeadlineSidepanel = elements.editTaskModalHeadlineSidepanel;
-const editTaskModalSideBarBottom = elements.editTaskModalSideBarBottom;
-const editTaskModalToggleDiv = elements.editTaskModalToggleDiv;
-const editTaskModalIconDark = elements.editTaskModalIconDark;
-const editTaskModalIconLight = elements.editTaskModalIconLight;
-const editTaskModalSwitch = elements.editTaskModalSwitch;
-const editTaskModalLabelCheckboxTheme = elements.editTaskModalLabelCheckboxTheme;
-const editTaskModalEditBoardDiv = elements.editTaskModalEditBoardDiv;
-const editTaskModalDeleteBoardBtn = elements.editTaskModalDeleteBoardBtn;
-const editTaskModalBoardBtn = elements.editTaskModalBoardBtn;
-const editTaskModalButton = elements.editTaskModalButton;
-const editTaskModalNewTaskModalWindow = elements.editTaskModalNewTaskModalWindow;
-*/
 
 // Extracts unique board names from tasks
 // TASK: FIX BUGS
@@ -127,17 +100,17 @@ function displayBoards(boards) {
 
     boardElement.classList.add("board-btn");
 
-    boardElement.addEventListener("click", () => { 
+    boardElement.click () ; { 
       elements.headerBoardName.textContent = board;  
       // Filter and display tasks associated with the clicked board
       filterAndDisplayTasksByBoard(board);
       // Update the active board variable
-      activeBoard = board;
+      activeBoard = board
       // Save the new active board to local storage
-      localStorage.setItem("activeBoard", JSON.stringify(activeBoard));
+      localStorage.setItem("activeBoard", JSON.stringify(activeBoard))
       // Apply styling specific to the active board
-      styleActiveBoard(activeBoard);
-    });
+      styleActiveBoard(activeBoard)
+    };
     
     // Append the newly created button to the boards container
     boardsContainer.appendChild(boardElement);
@@ -148,7 +121,7 @@ function displayBoards(boards) {
 // TASK: Fix Bugs
 function filterAndDisplayTasksByBoard(boardName) {
   const tasks = getTasks(); // Fetch tasks from a simulated local storage function
-  const filteredTasks = tasks.filter(task => task.board = boardName);
+  const filteredTasks = tasks.filter(task => task.board === boardName);
 
   // Ensure the column titles are set outside of this function or correctly initialized before this function runs
 
