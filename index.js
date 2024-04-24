@@ -17,7 +17,7 @@ import { initialData } from './initialData.js';
 function initializeData() {
   if (!localStorage.getItem('tasks')) {
     localStorage.setItem('tasks', JSON.stringify(initialData)); 
-    localStorage.setItem('showSideBar', 'true');
+    localStorage.setItem('showSideBar', 'true')
   } else {
     console.log('Data already exists in localStorage');
   }
@@ -27,27 +27,31 @@ function initializeData() {
 const elements = {
   // Navigation Sidebar elements
   sideBar: document.querySelector(".side-bar"),
-  logo: document.getElementById("logo"),
-  boardsNavLinks: document.getElementById("boards-nav-links-div"),
-  darkThemeIcon: document.getElementById("icon-dark"),
+  boardsNavLinksDiv: document.getElementById("boards-nav-links-div"),
   themeSwitch: document.getElementById("switch"),
-  lightThemeIcon: document.getElementById("icon-light"),
   hideSideBarBtn: document.getElementById("hide-side-bar-btn"),
   showSideBarBtn: document.getElementById("show-side-bar-btn"),
+  sideLogoDiv: document.getElementById("side-logo-div"),
 
   // Header
   headerBoardName: document.getElementById("header-board-name"),
   addNewTaskBtn: document.getElementById("add-new-task-btn"),
   editBoardBtn: document.getElementById("edit-board-btn"),
+  editBtns: document.getElementById("deleteBoardBtn"),
+  dropDown: document.getElementById("dropdownBtn"),
 
   // New Task Modal
   titleInput: document.getElementById("title-input"),
-  descInput: document.getElementById("desc-input"),
+  teatArea: document.getElementById("desc-input"),
   selectStatus: document.getElementById("select-status"),
-  createNewTaskBtn: document.getElementById("create-task-btn"),
+  createNewTaskBtn: document.getElementById("add-new-task-btn"),
   cancelAddTaskBtn: document.getElementById("cancel-add-task-btn"),
-  newTaskModal: document.getElementById("new-task-modal-window"),
   modalWindow: document.getElementById("new-task-modal-window"),
+  inputDiv : document.getElementById("modal-select-status"),
+
+  //Task column
+  columnDiv : document.querySelectorAll(".column-div"),
+  tasksContainer : document.querySelectorAll(".tasks-container"),
 
   // Edit Task Modal
   editTaskModal: document.querySelector(".edit-task-modal-window"),
@@ -182,20 +186,6 @@ function refreshTasksUI() {
 // Styles the active board by adding an active class
 // TASK: Fix Bugs
 function styleActiveBoard(boardName) {
-  document.querySelectorAll('.board-btn').foreach(btn => { 
-    
-    if(btn.textContent === boardName) {
-      btn.add('active') 
-    }
-    else {
-      btn.remove('active'); 
-    }
-  });
-}
-
-// Styles the active board by adding an active class
-// TASK: Fix Bugs
-function styleActiveBoard(boardName) {
   document.querySelectorAll('.board-btn').forEach(btn => { 
     if (btn.textContent === boardName) {
       btn.classList.add('active');
@@ -222,10 +212,10 @@ function addTaskToUI(task) {
 
   //responsible for dynamically adding tasks to a web page
   const taskElement = document.createElement('div');
-  taskElement.classList.add('task-div');
+  taskElement.className = 'task-div';
   taskElement.textContent = task.title; // Modify as needed
-  taskElement.dataset.taskId = task.id;
-  tasksContainer.appendChild(taskElement);
+  taskElement.setAttribute('data-task-id', task.id);
+  tasksContainer.appendChild();
 }
 
 function setupEventListeners() {
