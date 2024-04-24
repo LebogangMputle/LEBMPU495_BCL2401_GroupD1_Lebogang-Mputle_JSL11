@@ -62,7 +62,7 @@ const elements = {
   filterDiv: document.getElementById("filterDiv"),
 };
 
-let activeBoard = "";
+let activeBoard = ""
 
 /*const sideBarDiv = elements.sideBarDiv;
 const logo = elements.logo;
@@ -109,19 +109,34 @@ function fetchAndDisplayBoardsAndTasks() {
 // Creates different boards in the DOM
 // TASK: Fix Bugs
 function displayBoards(boards) {
-  elements.boardsContainer.innerHTML = ''; // Clears the container
+  // Access the container element for the boards
+  const boardsContainer = document.getElementById('boards-nav-links-div');
+  // Clear the existing content in the boards container to avoid duplicates
+  boardsContainer.innerHTML = '';
+
+  // Iterate through each board name provided in the boards array
   boards.forEach(board => {
+    // Create a new button element for each board
     const boardElement = document.createElement("button");
-    boardElement.textContent = board;
+    // Set the button text to the board name
+    boardElement.textContent = board; 
+
     boardElement.classList.add("board-btn");
-    boardElement.addEventListener('click', () => {  //fixed the syntax error
-      elements.headerBoardName.textContent = board;
+
+    boardElement.addEventListener("click", () => { 
+      elements.headerBoardName.textContent = board;  
+      // Filter and display tasks associated with the clicked board
       filterAndDisplayTasksByBoard(board);
-      activeBoard = board; // assigns active board
+      // Update the active board variable
+      activeBoard = board;
+      // Save the new active board to local storage
       localStorage.setItem("activeBoard", JSON.stringify(activeBoard));
+      // Apply styling specific to the active board
       styleActiveBoard(activeBoard);
     });
-    elements.boardsContainer.appendChild(boardElement);
+    
+    // Append the newly created button to the boards container
+    boardsContainer.appendChild(boardElement);
   });
 }
 
