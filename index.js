@@ -192,6 +192,7 @@ function addTaskToUI(task) {
   tasksContainer.appendChild(taskElement);
 }
 
+
 function setupEventListeners() {
   // Cancel editing task event listener
   const cancelEditBtn = document.getElementById('cancel-edit-btn');
@@ -239,6 +240,8 @@ function toggleModal(show, modal = elements.modalWindow) {
 // Style for the sideBar nav links, margin between the Nav Links Div's
 elements.boardsNavLinksDiv.style.marginTop = "2.5rem";
 elements.boardsNavLinksDiv.style.marginBottom = '17rem';
+
+
 /*************************************************************************************************************************************************
  * COMPLETE FUNCTION CODE
  * **********************************************************************************************************************************************/
@@ -311,6 +314,12 @@ function openEditTaskModal(task) {
   // Call saveTaskChanges upon click of Save Changes button
   saveChangesBtn.addEventListener('click', () => {
     saveTaskChanges(task.id);
+    refreshTasksUI();
+  });
+  // Call deleteTaskBtn upon click of Save Changes button
+  deleteTaskBtn.addEventListener('click', () => {
+    deleteTask(task.id);
+    toggleModal(false, elements.editTaskModal);
     refreshTasksUI();
   });
   
