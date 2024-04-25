@@ -47,7 +47,7 @@ const elements = {
 
   // New Task Modal elements
   titleInput: document.getElementById('title-input'),
-  teatArea: document.getElementById('desc-input'),
+  descInput: document.getElementById('desc-input'),
   selectStatus: document.getElementById('select-status'),
   createNewTaskBtn: document.getElementById('add-new-task-btn'),
   cancelAddTaskBtn: document.getElementById('cancel-add-task-btn'),
@@ -59,7 +59,7 @@ const elements = {
   tasksContainers : document.querySelectorAll('.tasks-container'),
 
   // Edit Task Modal elements
-  modalWindow: document.querySelector('.edit-task-modal-window'),
+  editTaskModal: document.querySelector('.edit-task-modal-window'),
   editTaskForm: document.getElementById('edit-task-form'),
   editTaskTitleInput: document.getElementById('edit-task-title-input'),
   editTaskDescInput: document.getElementById('edit-task-desc-input'),
