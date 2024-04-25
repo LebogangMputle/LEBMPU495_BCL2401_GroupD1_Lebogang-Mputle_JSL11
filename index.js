@@ -335,7 +335,7 @@ function saveTaskChanges(taskId) {
 
   // Create an object with the updated task details
   const updatedTask ={
-    // id: task_id,
+    // id: task_id
     title: titleInput,
     description: descriptionInput,
     status: selectStatus,
