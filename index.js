@@ -6,7 +6,7 @@ import {
   patchTask, 
   putTask, 
   deleteTask} 
-  from "./utils/taskFunctions.js";
+  from './utils/taskFunctions.js';
 import { initialData } from './initialData.js';
 
 /*************************************************************************************************************************************************
@@ -53,7 +53,7 @@ const elements = {
   //inputDiv : document.getElementById('modal-select-status'),
 
   //Task column main elements
-  columnDiv : document.querySelectorAll('.column-div'),
+  columnDivs : document.querySelectorAll('.column-div'),
   tasksContainer : document.querySelectorAll('.tasks-container'),
 
   // Edit Task Modal elements
