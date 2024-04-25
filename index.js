@@ -1,13 +1,7 @@
 // TASK: import helper functions from utils
 // TASK: import initialData
-import { 
-  getTasks, 
-  createNewTask, 
-  patchTask, 
-  putTask, 
-  deleteTask} 
-  from './utils/taskFunctions.js';
-import { initialData } from './initialData.js';
+import {getTasks, createNewTask, patchTask, putTask, deleteTask} from './utils/taskFunctions.js';
+import {initialData} from './initialData.js';
 
 /*************************************************************************************************************************************************
  * FIX BUGS!!!
@@ -28,13 +22,14 @@ initializeData();
 // TASK: Get elements from the DOM
 const elements = {
   // Navigation Sidebar elements
-  sideBar: document.querySelector(".side-bar"),
+  sideBar: document.querySelector('.side-bar'),
   sideLogoDiv: document.getElementById('logo'),
   sideBarDiv: document.getElementById('side-bar-div'),
   boardsNavLinksDiv: document.getElementById('boards-nav-links-div'),
   themeSwitch: document.getElementById('switch'),
   hideSideBarBtn: document.getElementById('hide-side-bar-btn'),
   showSideBarBtn: document.getElementById('show-side-bar-btn'),
+  headerBoardName: document.getElementById("header-board-name"),
 
   // Header elements
   header: document.getElementById('header'),
@@ -82,7 +77,7 @@ function fetchAndDisplayBoardsAndTasks() {
   displayBoards(boards);
   if (boards.length > 0) {
     const localStorageBoard = JSON.parse(localStorage.getItem("activeBoard"))
-    activeBoard = localStorageBoard ? localStorageBoard : boards[0];
+    activeBoard = localStorageBoard ? localStorageBoard :  boards[0]; 
     elements.headerBoardName.textContent = activeBoard
     styleActiveBoard(activeBoard)
     refreshTasksUI();
@@ -93,18 +88,18 @@ function fetchAndDisplayBoardsAndTasks() {
 // TASK: Fix Bugs
 function displayBoards(boards) {
   // Access the container element for the boards
-  const boardsContainer = document.getElementById("boards-nav-links-div");
+  const boardsContainer = document.getElementById('boards-nav-links-div');
   // Clear the existing content in the boards container to avoid duplicates
   boardsContainer.innerHTML = '';
 
   // Iterate through each board name provided in the boards array
   boards.forEach(board => {
     // Create a new button element for each board
-    const boardElement = document.createElement("button");
+    const boardElement = document.createElement('button');
     // Set the button text to the board name
     boardElement.textContent = board; 
 
-    boardElement.classList.add("board-btn");
+    boardElement.classList.add('board-btn');
 
     boardElement.addEventListener('click', () => { 
       elements.headerBoardName.textContent = board;  
@@ -113,7 +108,7 @@ function displayBoards(boards) {
       // Update the active board variable
       activeBoard = board //assign active board
       // Save the new active board to local storage
-      localStorage.setItem("activeBoard", JSON.stringify(activeBoard))
+      localStorage.setItem('activeBoard', JSON.stringify(activeBoard))
       // Apply styling specific to the active board
       styleActiveBoard(activeBoard)
     });
@@ -132,11 +127,11 @@ function filterAndDisplayTasksByBoard(boardName) {
   // Ensure the column titles are set outside of this function or correctly initialized before this function runs
 
   elements.columnDivs.forEach(column => {
-    const status = column.getAttribute("data-status");
+    const status = column.getAttribute('data-status');
     // Reset column content while preserving the column title
-    column.innerHTML = `<div class="column-head-div">
+    column.innerHTML = `<div class='column-head-div'>
                           <span class="dot" id="${status}-dot"></span>
-                          <h4 class="columnHeader">${status.toUpperCase()}</h4>
+                          <h4 class='columnHeader'>${status.toUpperCase()}</h4>
                         </div>`;
 
     const tasksContainer = document.createElement("div");
@@ -144,7 +139,7 @@ function filterAndDisplayTasksByBoard(boardName) {
 
     filteredTasks.filter(task => task.status === status).forEach(task => { 
       const taskElement = document.createElement("div");
-      taskElement.classList.add("task-div");
+      taskElement.classList.add('task-div');
       taskElement.textContent = task.title;
       taskElement.setAttribute('data-task-id', task.id);
 
@@ -241,15 +236,29 @@ function toggleModal(show, modal = elements.modalWindow) {
   modal.style.display = show ? 'block' : 'none'; 
 }
 
+// Style for the sideBar nav links, margin between the Nav Links Div's
+elements.boardsNavLinksDiv.style.marginTop = "2.5rem";
+elements.boardsNavLinksDiv.style.marginBottom = '17rem';
 /*************************************************************************************************************************************************
  * COMPLETE FUNCTION CODE
  * **********************************************************************************************************************************************/
 
 function addTask(event) {
   event.preventDefault(); 
+
+  //Assign user input to the task object
+  const task_id = JSON.parse(localStorage.getItem('id'));
+  const titleInput = elements.titleInput.value;
+  const descriptionInput = elements.descInput.value;
+  const selectStatus = elements.selectStatus.value;
   // Extract user input and create a new task object
   const task = {
     // Extract task details from event or form inputs
+    'id': task_id,
+    'title': titleInput,
+    'description': descriptionInput,
+    'status': selectStatus,
+    'board': activeBoard,
   };
   const newTask = createNewTask(task); // Create a new task
   if (newTask) {
@@ -259,6 +268,7 @@ function addTask(event) {
     event.target.reset(); // Reset the form
     refreshTasksUI(); // Refresh tasks UI
   }
+  location.reload();
 }
 
 function toggleSidebar(show) {
