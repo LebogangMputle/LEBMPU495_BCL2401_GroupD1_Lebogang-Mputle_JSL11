@@ -341,6 +341,24 @@ function saveTaskChanges(taskId) {
   toggleModal(false, elements.editTaskModal);
   refreshTasksUI();
 }
+////////////
+const displayStoredTasks = () => {
+  // Retrieving the tasks from localStorage
+  const storedTasks = localStorage.getItem('tasks');
+
+  if (storedTasks) {
+    // Parsing the JSON string to an array of tasks
+    const tasks = JSON.parse(storedTasks);
+
+    // Loging the tasks to the console
+    console.log(tasks);
+  } else {
+    console.log('No tasks stored in localStorage.');
+  }
+}
+
+// Calling the function to display the stored tasks
+displayStoredTasks();
 
 /*************************************************************************************************************************************************/
 
