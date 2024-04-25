@@ -37,10 +37,12 @@ const elements = {
   showSideBarBtn: document.getElementById('show-side-bar-btn'),
 
   // Header elements
+  header: document.getElementById('header'),
   headerBoardName: document.getElementById('header-board-name'),
   addNewTaskBtn: document.getElementById('add-new-task-btn'),
   editBoardBtn: document.getElementById('edit-board-btn'),
-  editBtns: document.getElementById('deleteBoardBtn'),
+  editBtns: document.getElementById('edit-board-btn'),
+  deleteBoardBtn: document.getElementById('deleteBoardBtn'),
   dropDown: document.getElementById('dropdownBtn'),
 
   // New Task Modal elements
@@ -54,7 +56,7 @@ const elements = {
 
   //Task column main elements
   columnDivs : document.querySelectorAll('.column-div'),
-  tasksContainer : document.querySelectorAll('.tasks-container'),
+  tasksContainers : document.querySelectorAll('.tasks-container'),
 
   // Edit Task Modal elements
   modalWindow: document.querySelector('.edit-task-modal-window'),
